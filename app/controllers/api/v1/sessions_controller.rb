@@ -20,7 +20,13 @@ class Api::V1::SessionsController < Api::V1::ApplicationController
 		end
 		if @success
 			@user.update_attributes(online: true, login_token: SecureRandom.hex(4))
-			render json: @user
+			render json: {
+				success: true,
+				user: @user.as_json({
+					only: [:login_token, :name, :email, :state, :country],
+					methods: [:image_url]
+				})
+			}
 		else
 			render json: {
 				messages: @messages,
