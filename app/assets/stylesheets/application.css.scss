@@ -13,3 +13,196 @@
  *= require_tree .
  *= require_self
  */
+
+/* Base Styles
+   ========================================================================== */
+
+html,
+body,
+#wrapper{
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+/* Theme Styles
+   ========================================================================== */
+
+.img-thumbnail,
+.btn,
+.btn-group .btn,
+.btn-group .dropdown-menu,
+.btn-group .btn,
+.btn-group .btn:first-child:not(:last-child),
+.btn-group .btn:last-child:not(:first-child),
+.table-bordered,
+.table-bordered tr:first-child th:first-child,
+.table-bordered tr:first-child th:last-child,
+.table-bordered tr:last-child td:first-child,
+.table-bordered tr:last-child td:last-child,
+.input-group .btn,
+.input-group .dropdown-menu,
+.input-group .form-control,
+.input-group .input-group-addon,
+.dropdown-menu,
+.dropdown-menu .dropdown-submenu .dropdown-menu,
+.form .form-control,
+.form .btn,
+.form-control,
+.label,
+.badge,
+.alert,
+.alert .btn,
+.progress,
+.breadcrumb,
+.tooltip .tooltip-inner,
+.popover,
+.nav-list-panel,
+.nav-tabs li > a,
+.tabs-below .nav-tabs li > a,
+.tabs-right .nav-tabs li > a,
+.tabs-left .nav-tabs li > a,
+.nav-tabs .dropdown-menu,
+.tabs-below .nav-tabs .dropdown-menu,
+.nav-pills li a,
+.nav-pills .dropdown-menu,
+.navbar,
+.navbar .dropdown-menu,
+.progress-bar, .progress
+.pagination li:first-child a, 
+.pagination li:first-child span,
+.pagination li:last-child a, 
+.pagination li:last-child span,
+.pager li a:hover,
+.pager li a:focus,
+.panel,
+.panel-heading,
+.panel-body,
+.breadcrumb-arrow li:first-child a,
+pre, code,.container .jumbotron,
+.input-lg, .form-group-lg .form-control ,
+.modal-header .modal-title,.modal-content,
+.panel-group .panel, .panel-group .panel-heading{
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  -webkit-text-shadow: none;
+  -moz-text-shadow: none;
+  -o-text-shadow: none;
+  text-shadow: none;
+}
+
+
+/* Layout Styles
+   ========================================================================== */
+
+#main-navbar{
+  background: #424f57;
+  border: 0;
+  margin-bottom: 0;
+
+  .navbar-brand{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  .nav-link{
+    color: #fff;
+
+    &:hover{
+      background: #4f5c67;
+    }
+  }
+}
+
+.inner-wrapper{
+  height: 100%;
+  height: calc(100% - 50px);
+  width: 100%;
+}
+
+.page-sidebar,
+.page-content{
+  padding: 15px;
+}
+
+.page-sidebar{
+  color: #fff;
+  background-color: #4f5c67;
+  float: left;
+  width: 240px;
+  height: 100%;
+}
+
+.page-content{
+  margin-left: 240px;
+}
+
+.user-wrap{
+  text-align: center;
+  border-bottom: 1px solid #fff;
+
+  .user-avatar{
+    height: 120px;
+    width: 120px;
+    margin: 10px auto;
+  }
+
+  .avatar-image{
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  .user-info{
+    padding: 0;
+    margin-bottom: 15px;
+
+    .info-item{
+      list-style: none;
+
+      &.name{
+        font-size: 18px;
+      }
+    }
+
+  }
+}
+
+.todo-lists{
+  padding: 0;
+  margin: 0 -15px;
+
+  .section-title{
+    font-size: 20px;
+    margin-left: 60px;
+  }
+
+  .lists-item{
+    list-style: none;
+    padding: 10px;
+    padding-left: 60px;
+
+    &.active{
+      cursor: pointer;
+      background-color: #424f57;
+
+
+      .list-link{
+        text-decoration: none;
+      }
+    }
+  }
+
+  .list-link{
+    color: #fff;
+  }
+}
