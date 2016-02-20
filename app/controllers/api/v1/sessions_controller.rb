@@ -6,6 +6,7 @@ class Api::V1::SessionsController < Api::V1::ApplicationController
 			if @user.new_record?
 				@user.attributes = {password: params[:password], password_confirmation: params[:password]}
 				if @user.save
+					List.create(user_id: @user.id, name: "todo")
 					@success = true
 				else
 					@success = false

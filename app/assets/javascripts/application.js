@@ -12,7 +12,6 @@
 //
 //= require angular/angular
 //= require jquery/dist/jquery
-//= require jquery-ujs/src/rails
 //= require turbolinks
 //= require bootstrap-sass/assets/javascripts/bootstrap
 //= require_tree .
