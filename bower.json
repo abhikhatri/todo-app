@@ -1,0 +1,23 @@
+{
+  "name": "todo-app",
+  "homepage": "https://github.com/abhikhatri/todo-app",
+  "authors": [
+    "Abhi Khatri <abhikhatri391@gmail.com>"
+  ],
+  "description": "0.1",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#1.4.6",
+    "bootstrap": "^3.3.6"
+  }
+}
