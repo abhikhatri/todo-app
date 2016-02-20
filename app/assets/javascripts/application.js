@@ -14,6 +14,5 @@
 //= require angular-ui-router/release/angular-ui-router
 //= require_tree .
 //= require jquery/dist/jquery
-//= require jquery-ujs/src/rails
 //= require turbolinks
 //= require bootstrap-sass/assets/javascripts/bootstrap
