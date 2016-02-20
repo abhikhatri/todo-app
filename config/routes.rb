@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :sessions, :only => [:create, :destroy]
       resources :lists
+      resources :users
+      resources :tasks do
+        put :start_task
+        put :end_task
+      end
     end
   end
   # You can have the root of your site routed with "root"

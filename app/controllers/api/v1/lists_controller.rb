@@ -4,9 +4,7 @@ class Api::V1::ListsController < Api::V1::ApplicationController
 	before_action :load_list, only: [:edit, :update, :show, :destroy]
 
 	def index
-		render json: {
-			list: current_user.lists
-		}
+		render json: current_user.lists 
 	end
 
 	def create
@@ -15,14 +13,13 @@ class Api::V1::ListsController < Api::V1::ApplicationController
 			render json: {
 				success: true,
 				list: @list.as_json({
-					only: [:id, :name],
-					methods: [:tasks]
+					only: [:id, :name]
 				})
 			}
 		else
 			render json: {
 				success: false,
-				errors: @list.errors.full_messages.join(", ")
+				messages: @list.errors.full_messages.join(", ")
 			}
 		end
 	end
@@ -32,14 +29,13 @@ class Api::V1::ListsController < Api::V1::ApplicationController
 			render json: {
 				success: true,
 				list: @list.as_json({
-					only: [:id, :name],
-					methods: [:tasks]
+					only: [:id, :name]
 				})
 			}
 		else
 			render json: {
 				success: false,
-				errors: @list.errors.full_messages.join(", ")
+				messages: @list.errors.full_messages.join(", ")
 			}
 		end
 	end
@@ -52,12 +48,12 @@ class Api::V1::ListsController < Api::V1::ApplicationController
 		if @list.destroy
 			render json: {
 				success: true,
-				message: "Successfully deleted."
+				messages: "Successfully deleted."
 			}
 		else
 			render json: {
 				success: false,
-				message: "Something went wrong."
+				messages: "Something went wrong."
 			}
 		end
 	end
@@ -70,6 +66,7 @@ class Api::V1::ListsController < Api::V1::ApplicationController
 
 		def load_list
 			@list = List.where(id: params[:id]).first
+			(render json: {messages: "List not found", success: false}) if @list.blank?
 		end
 
 end
