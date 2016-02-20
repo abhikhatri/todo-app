@@ -24,6 +24,7 @@ class Api::V1::SessionsController < Api::V1::ApplicationController
 			@messages = params[:email].present? ? "Password is missing" : "Email is missing"
 		end
 		if @success
+			@user.update_attributes(online: true, login_token: SecureRandom.hex(4))
 			render json: @user
 		else
 			render json: {
@@ -34,16 +35,24 @@ class Api::V1::SessionsController < Api::V1::ApplicationController
 	end
 
 	def destroy
-		@user = User.where(id: params[:id]).first
+		@user = User.fetch_by_login_token(params[:id])
 		if @user.present?
-			render json: {
-				success: true,
-				message: "Successfully loged out."
-			}
+			if @user.update_attributes(online: false, login_token: "")
+				render json: {
+					success: true,
+					online: @user.online,
+					messages: "Successfully loged out."
+				}
+			else
+				render json: {
+					success: false,
+					messages: @user.errors.full_messages.join(", ")
+				}
+			end
 		else
 			render json: {
 				success: false,
-				message: "Session does not exist."
+				messages: "Session does not exist."
 			}
 		end
 	end
