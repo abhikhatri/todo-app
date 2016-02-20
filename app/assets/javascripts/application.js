@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require angular/angular
+
+(document).re(function() {
+	alert("hello");
+})
