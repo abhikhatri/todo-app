@@ -1,0 +1,55 @@
+<div class="form-wrapper">
+  <div class="container">
+      <div class="form-sections">
+        <div class="col-md-6 f-login-container">
+
+          <h1 class="f-login-title">
+            log in
+          </h1>
+
+          <form class="new_user" id="new_user" ng-submit="createUser(user)">
+            
+            <input class="form-control" placeholder="Email address" type="email">
+            
+            <input class="form-control" placeholder="Password" type="password">
+              
+            <label class="checkbox">
+              <input type="checkbox"> 
+              Keep Me Signed In
+            </label>
+
+            <input type="submit" name="commit" value="log in" class="btn btn-lg btn-primary btn-block f-login-btn">
+          </form>
+        </div>
+
+        <div class="col-md-6 f-register-container">
+
+          <div class="f-regiter-width">
+
+            <p class="f-register-tagline">
+              If you don’t already have an account click the button below to create your account.
+            </p>
+            
+            <a href="/#contact" class="btn btn-block f-register-btn">create account</a>
+
+            <div class="f-register-divider">
+              or
+            </div>
+
+            <a href="#" class="btn btn-block f-register-btn g-plus-btn">
+              Sign in with Google
+              <i class="ion fa-fw">&#xf235;</i>
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="f-bottom-section">
+        <span>So you can’t get in to your account?</span> <span class="f-text-block">Did you 
+          <a class="f-link" href="#">forget your password?</a>
+        </span>
+        <br>
+      </div>
+  </div>
+</div>

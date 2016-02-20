@@ -1,39 +1,50 @@
-var todoApp = angular.module('todoApp', ['ui.router']);
+(function(){
 
-todoApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-    
-    $urlRouterProvider.otherwise('/home');
+  'use strict';
+
+  var todoApp = angular.module('todoApp', ['ui.router']);
+
+  todoApp.run(function($rootScope, $state) { 
+
+    //Exposing the state to all views for conditional elements
+    $rootScope.$state = $state;
+
+  });
+
+  todoApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+      
+    $urlRouterProvider.otherwise('/404');
     
     $stateProvider
         
-        // HOME STATES AND NESTED VIEWS ========================================
-        .state('app', {
-            url: '',
-            abstract: true,
-            controller: "mainController",
-            templateUrl: '/templates/index.html'
-        })
-        
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('app.home', {
-            url: "/home",
-            views: {
-              "app": {
-                controller: "mainController",
-                templateUrl: "/templates/home.html"
-              }
-            }
-        });
+      .state('app', {
+        url: '',
+        abstract: true,
+        controller: "applicationController",
+        templateUrl: '/templates/index.html'
+      })
+      
+      .state('app.home', {
+        url: "/",
+        views: {
+          "app": {
+            templateUrl: "/templates/home.html"
+          }
+        }
+      })
 
-        // use the HTML5 History API
-        $locationProvider.html5Mode(true);
-        
-});
+      .state('app.login', {
+        url: "/login",
+        views: {
+          "app": {
+            templateUrl: "/templates/login.html"
+          }
+        }
+      });
 
+      // use the HTML5 History API
+      $locationProvider.html5Mode(true);
+          
+  });
 
-todoApp.controller('mainController', function($http) {
-
-    var main = this;
-    console.log('Hello');
-
-});
+})();

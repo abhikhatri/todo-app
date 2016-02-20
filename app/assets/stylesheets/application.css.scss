@@ -113,6 +113,11 @@ pre, code,.container .jumbotron,
   .navbar-brand{
     padding-top: 0;
     padding-bottom: 0;
+    width: 240px;
+
+    img{
+      margin: 0 auto;
+    }
   }
   
   .nav-link{
@@ -121,6 +126,10 @@ pre, code,.container .jumbotron,
     &:hover{
       background: #4f5c67;
     }
+
+    &.sign-up{
+      background: #00afd8;
+    }
   }
 }
 
@@ -128,11 +137,16 @@ pre, code,.container .jumbotron,
   height: 100%;
   height: calc(100% - 50px);
   width: 100%;
+
+  &.vertically-center{
+    display: table;
+  }
 }
 
 .page-sidebar,
 .page-content{
   padding: 15px;
+  height: 100%;
 }
 
 .page-sidebar{
@@ -140,7 +154,6 @@ pre, code,.container .jumbotron,
   background-color: #4f5c67;
   float: left;
   width: 240px;
-  height: 100%;
 }
 
 .page-content{
@@ -183,6 +196,7 @@ pre, code,.container .jumbotron,
 
   .section-title{
     font-size: 20px;
+    font-weight: 300;
     margin-left: 60px;
   }
 
@@ -206,3 +220,188 @@ pre, code,.container .jumbotron,
     color: #fff;
   }
 }
+
+.form-wrapper{
+    display: table-cell;
+    padding: 20px 0;
+    vertical-align: middle;
+    background: #DDD;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+
+  .container {
+    padding-right: 40px;
+  }
+
+  .form-sections:before,
+  .form-sections:after {
+    content: " ";
+    display: table;
+  }
+
+
+  .form-sections:after {
+    clear: both;
+  }
+
+  .f-register-container,
+  .f-login-container {
+    background: #fff;
+    padding: 50px 60px;
+    min-height: 385px;
+  }
+
+  .f-login-container {
+    border-right: 1px solid #D9D9D9;
+  }
+
+  .new_user,
+  .f-login-title,
+  .f-regiter-width {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .f-regiter-width{
+    margin: 50px auto;
+  }
+
+  .f-login-title {
+    color: #000000;
+    font-size: 24px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700 !important;
+    text-transform: capitalize;
+    margin-top: 13px;
+    margin-bottom: 30px;
+  }
+
+  .f-bottom-section {
+    background: #F3F3F3;
+    color: #5F5F5F;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 26px 0;
+    text-align: center;
+  }
+
+  .f-link {
+    color: #5F5F5F;
+    text-decoration: underline;
+  }
+
+  .form-control {
+    background-color: #FFF;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none;
+    display: block;
+    margin-bottom: 16px;
+    min-height: 42px;
+    padding: 13px 14px;
+  }
+
+  .form-control::-webkit-input-placeholder {
+    color: #868686;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+
+  .form-control::-moz-input-placeholder {
+    color: #868686;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+
+  .form-control:-moz-input-placeholder {
+    color: #868686;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+
+  .form-control:-ms-input-placeholder {
+    color: #868686;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+
+  .checkbox {
+    display: block;
+    color: #666666;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 20px 0;
+    padding-left: 20px;
+  }
+
+  .btn.f-login-btn {
+    border-radius: 0 !important;
+    padding: 8px;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    &::hover {
+      color: #fff;
+      border-color: #3276b1;
+    }
+  }
+
+  .f-register-tagline,
+  .f-tagline {
+    color: #666666;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    margin-top: 13px;
+  }
+
+  .f-register-btn {
+    color: #fff;
+    margin-top: 20px;
+    border-radius: 0 !important;
+    padding: 8px;
+    font-weight: 700;
+    background: #000000;
+    text-transform: capitalize;
+
+    &:hover {
+      color: #fff;
+    }
+
+    .ion{
+      font-size: 18px;
+      vertical-align: middle;
+    }
+
+    .fa-fw{
+      width: 1.28571429em;
+      text-align: center;
+    }
+  }
+
+  .f-register-btn.g-plus-btn {
+    margin-top: 0;
+    background: #d34836 !important;
+}
+
+  .f-register-divider {
+    color: #666666;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 15px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+}
+
+
+
+
