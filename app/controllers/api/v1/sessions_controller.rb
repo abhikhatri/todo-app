@@ -2,23 +2,17 @@ class Api::V1::SessionsController < Api::V1::ApplicationController
 
 	def create
 		if params[:email] && params[:password]
-			@user = User.where(email: params[:email]).first_or_initialize
-			if @user.new_record?
-				@user.attributes = {password: params[:password], password_confirmation: params[:password]}
-				if @user.save
-					List.create(user_id: @user.id, name: "todo")
-					@success = true
-				else
-					@success = false
-					@messages = @user.errors.full_messages.join(", ")
-				end
-			else
+			@user = User.where(email: params[:email]).first
+			if @user.present?
 				if @user.valid_password?(params[:password])
 					@success = true
 				else
 					@success = false
 					@messages = "Password doesn't match."
-				end
+				end 
+			else
+				@success = false
+				@messages = "Invalid email and password combination."
 			end
 		else
 			@success = false
