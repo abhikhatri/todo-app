@@ -14,6 +14,7 @@
     serviceModule.login = function(user) {
       $http.post('api/v1/sessions', user)
         .success(function(data) {
+          console.log(data);
           if(data.success) {
             $window.localStorage.token = data.login_token;
             $state.go('app.home');
@@ -24,8 +25,8 @@
     serviceModule.register = function(userInfo) {
       $http.post('api/v1/users', {user: userInfo})
         .success(function(data) {
+          console.log(data);
           if(data.success) {
-            console.log(data);
             $window.localStorage.token = data.user.login_token;
             $state.go('app.home');
           }
