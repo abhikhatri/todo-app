@@ -4,6 +4,7 @@ class Api::V1::ListsController < Api::V1::ApplicationController
 	before_action :load_list, only: [:edit, :update, :show, :destroy]
 
 	def index
+		current_user = User.where(login_token: params[:user_id]).first
 		render json: current_user.lists 
 	end
 

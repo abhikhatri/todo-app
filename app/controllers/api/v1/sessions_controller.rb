@@ -22,10 +22,7 @@ class Api::V1::SessionsController < Api::V1::ApplicationController
 			@user.update_attributes(online: true, login_token: SecureRandom.hex(4))
 			render json: {
 				success: true,
-				user: @user.as_json({
-					only: [:login_token, :name, :email, :state, :country],
-					methods: [:image_url]
-				})
+				login_token: @user.login_token
 			}
 		else
 			render json: {
