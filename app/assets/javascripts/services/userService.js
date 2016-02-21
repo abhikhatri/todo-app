@@ -13,8 +13,7 @@
 
     serviceModule.login = function(user) {
       $http.post('api/v1/sessions', user)
-        .success(function(data) {
-          console.log(data);
+        .success(function(data) { 
           if(data.success) {
             $window.localStorage.token = data.login_token;
             $state.go('app.home');
