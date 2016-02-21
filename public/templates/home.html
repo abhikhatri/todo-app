@@ -5,10 +5,10 @@
         </div>
         <ul class="user-info">
             <li class="info-item name">
-                Abhi Khatri
+                {{userCtrl.user.name}}
             </li>
             <li class="info-item">
-                New Delhi, India
+                {{userCtrl.user.state}}<span ng-if="userCtrl.user.country">,</span> {{userCtrl.user.country}}
             </li>
         </ul>
     </div>
@@ -16,16 +16,34 @@
     <ul class="todo-lists">
         <h3 class="section-title">Task List</h3>
         
-        <li class="lists-item active">
-            <a href="#" class="list-link">Task #1</a>
-        </li>
-        
-        <li class="lists-item">
-            <a href="#" class="list-link">Task #2</a>
+        <li class="lists-item" ng-repeat="list in userCtrl.user.lists" ng-class="{'active': $first}">
+            <a class="list-link" ng-click="userCtrl.changeList($index)">{{list.name}}</a>
         </li>
     </ul>
 </aside>
 
 <div class="page-content">
-    <p>{{$state.current.name}}</p>
+    <!-- <p>
+        {{userCtrl.user.lists[userCtrl.currentListIndex].name}}
+    </p> -->
+    <form name="addTaskForm" ng-submit="userCtrl.addTask(task)">
+        
+        <div class="addtask-wrapper">
+            <i class="ion">&#xf2c7;</i>
+            <input type="text" class="addtask-input" ng-model="task.title" placeholder="Add a todo" name="todo_title" maxlength="100">
+            <i class="ion panel-toggle collapsed" data-toggle="collapse" data-target="#detailsPanel"></i>
+        </div>
+
+        <div id="detailsPanel" class="collapse">
+            <div class="panel-wrap">
+                <div class="form-group">
+                    <textarea name="notes" class="custom-textarea" ng-model="task.description" placeholder="Add note"></textarea>
+                </div>
+                <div class="text-right">
+                    <input type="submit" class="btn btn-custom" value="Save">
+                    <a href="#detailsPanel" data-toggle="collapse" class="btn btn-default">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>

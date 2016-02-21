@@ -37,6 +37,7 @@
         url: "/",
         views: {
           "app": {
+            controller: "userController as userCtrl",
             templateUrl: "/templates/home.html"
           }
         },
