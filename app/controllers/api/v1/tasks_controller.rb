@@ -3,7 +3,7 @@ class Api::V1::TasksController < Api::V1::ApplicationController
 	before_action :load_task, only: [:update, :destroy, :end_task, :start_task]
 
 	def index
-		@list = List.where(id: params[:list_id])
+		@list = List.where(id: params[:list_id]).first
 		render json: @list.tasks
 	end
 
@@ -72,8 +72,9 @@ class Api::V1::TasksController < Api::V1::ApplicationController
 		if @task.update_attributes(end_time: Time.zone.now, active: false, elapsed_time: (Time.zone.now - @task.start_time).to_f / 3600)
 			render json: {
 				success: true,
+				start_time: @task.start_time,
 				end_time: @task.end_time,
-				elapsed_time: @task.elapsed_time || 0
+				elapsed_time: ((@task.end_time - @task.start_time).to_f / 3600).round(2)
 			}
 		else
 			render json: {
