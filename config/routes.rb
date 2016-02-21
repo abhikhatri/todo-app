@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :sessions, :only => [:create, :destroy]
       resources :lists
-      resources :users
+      resources :users do 
+        get :invite
+      end
       resources :tasks do
         put :start_task
         put :end_task

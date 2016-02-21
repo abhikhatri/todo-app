@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221124301) do
+ActiveRecord::Schema.define(version: 20160221131105) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 20160221124301) do
     t.string   "image_content_type",     limit: 255
     t.integer  "image_file_size",        limit: 4
     t.datetime "image_updated_at"
+    t.integer  "reffered_by_id",         limit: 4
+    t.boolean  "is_evaluator",                       default: false
+    t.string   "invitation_code",        limit: 255
+    t.boolean  "invite_accepted",                    default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,0 +1,15 @@
+<div class="email-wrap" style="display: block;font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif;text-align: center;background: #f9f9f9;width: 100%;margin: 0 auto;padding: 10px 0;">
+  <div class="pre-header" style="font-size: 5px;color: #f9f9f9;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;"> 
+    <p>
+      <span style: "font-weight: bold">Note: </span>
+    </p>
+  </div>
+
+  <div class="greeting-panel" style="font-size: 14px;display: block;width: 80%;margin: 10px auto;color: #565656;text-align: left;">
+    <p class="greeting-message">
+      <a href="<%= TodoTimer::Application.config.action_mailer.default_url_options[:host] %>/register/invitation_code=<%= @user.invitation_code %>" target="_blank" class="btn btn-primary">
+      	Go for login
+      </a>
+    </p>
+  </div>
+</div>

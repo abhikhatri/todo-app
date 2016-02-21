@@ -78,6 +78,7 @@ class Api::V1::TasksController < Api::V1::ApplicationController
 				pause_time: @task.pause_time,
 				elapsed_time: elapsed_time
 			}
+		end
 	end
 
 	def end_task

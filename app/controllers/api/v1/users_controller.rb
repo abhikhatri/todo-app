@@ -1,6 +1,6 @@
 class Api::V1::UsersController < Api::V1::ApplicationController
 
-	before_action :load_user, only: [:update, :destroy, :show]
+	before_action :load_user, only: [:update, :destroy, :show, :invite]
 
 	def create
 		@user = User.new(user_params)
@@ -55,6 +55,14 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 		render json: @user
 	end
 
+	def invite
+		evaluators_email = params[:evaluators_email]
+		InviteEvaluators.invite(evaluators_email, @user).deliver
+		render json: {
+			success: true
+		}
+	end
+
 	private
 
 		def user_params
@@ -62,7 +70,8 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 		end
 
 		def load_user
-			@user = User.fetch_by_login_token(params[:id])
+			id = params[:id] || params[:user_id]
+			@user = User.fetch_by_login_token(id)
 			(render json: {messages: "User not found", success: false}) if @user.blank?
 		end
 end
