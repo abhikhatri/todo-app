@@ -8,12 +8,16 @@
               log in
             </h1>
 
-            <form name="login-form" ng-submit="sessionCtrl.login(user)" novalidate>
+            <form name="loginForm" ng-submit="sessionCtrl.login(user)" novalidate>
               
-              <input class="form-control" placeholder="Email address" type="email" ng-model="user.email">
-              
-              <input class="form-control" placeholder="Password" type="password" ng-model="user.password">
-                
+              <div class="form-group">
+                <input class="form-control" placeholder="Email address" type="email" ng-model="user.email">
+              </div>
+
+              <div class="form-group">
+                <input class="form-control" placeholder="Password" type="password" ng-model="user.password">
+              </div>
+
               <label class="checkbox">
                 <input type="checkbox"> 
                 Keep Me Signed In
@@ -28,13 +32,23 @@
               Sign Up
             </h1>
 
-            <form name="login-form" ng-submit="sessionCtrl.register(user)" novalidate>
+            <form name="loginForm" ng-submit="loginForm.$valid && sessionCtrl.register(user)" novalidate>
               
-              <input class="form-control" placeholder="Full Name" type="text" ng-model="user.name">
+              <div class="form-group">
+                <input name="full_name" class="form-control" placeholder="Full Name" type="text" ng-model="user.name" required>
+                <p ng-show="loginForm.full_name.$invalid && loginForm.full_name.$touched || loginForm.$submitted && loginForm.full_name.$invalid" class="help-block">Full Name is required.</p>
+              </div>
 
-              <input class="form-control" placeholder="Email address" type="email" ng-model="user.email">
+              <div class="form-group">
+                <input name="email" class="form-control" placeholder="Email address" type="email" ng-model="user.email" required>
+                <p ng-show="loginForm.email.$invalid && loginForm.email.$touched || loginForm.$submitted && loginForm.email.$invalid" class="help-block">Email is required.</p>
+              </div>
               
-              <input class="form-control" placeholder="Password" type="password" ng-model="user.password">
+              <div class="form-group">
+                <input name="password" class="form-control" placeholder="Password" type="password" ng-model="user.password" ng-minlength="8" required>
+                 <p ng-show="loginForm.password.$invalid && loginForm.password.$touched || loginForm.$submitted && loginForm.password.$invalid" class="help-block">Password is required (Min 8 Characters).</p>
+
+              </div>
 
               <input type="submit" name="commit" value="sign up" class="btn btn-lg btn-block f-login-btn">
             </form>
@@ -45,12 +59,22 @@
 
           <div class="f-regiter-width">
 
-            <p class="f-register-tagline">
-              If you don’t already have an account click the button below to create your account.
-            </p>
+            <span ng-if="$state.current.name === 'app.login'">
+              <p class="f-register-tagline">
+                If you don’t already have an account click the button below to create your account.
+              </p>
+              
+              <a ui-sref="app.signup" class="btn btn-block f-register-btn">create account</a>
+            </span>
+
+            <span ng-if="$state.current.name === 'app.signup'">
+              <p class="f-register-tagline">
+                If you have an account already click the button below to log in.
+              </p>
+
+              <a ui-sref="app.login" class="btn btn-block f-register-btn login">log in</a>  
+            </span>
             
-            <a ui-sref="app.signup" class="btn btn-block f-register-btn" ng-if="$state.current.name === 'app.login'">create account</a>
-            <a ui-sref="app.login" class="btn btn-block f-register-btn login" ng-if="$state.current.name === 'app.signup'">log in</a>
 
             <div class="f-register-divider">
               or
