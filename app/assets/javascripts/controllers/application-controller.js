@@ -5,10 +5,15 @@
 
   var todoApp = angular.module('todoApp');
 
-  todoApp.controller('applicationController', function($http) {
+  todoApp.controller('applicationController', function($http, $window, $state, userService) {
 
     var appCtrl = this;
-    console.log('Hello');
+
+    appCtrl.logout = function() {
+      userService.logout();
+      $state.go('app.login');
+    };
+
 
   });
   

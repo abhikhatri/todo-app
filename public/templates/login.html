@@ -2,24 +2,43 @@
   <div class="container">
       <div class="form-sections">
         <div class="col-md-6 f-login-container">
+          
+          <span ng-if="$state.current.name === 'app.login'">
+            <h1 class="f-login-title">
+              log in
+            </h1>
 
-          <h1 class="f-login-title">
-            log in
-          </h1>
-
-          <form class="new_user" id="new_user" ng-submit="createUser(user)">
-            
-            <input class="form-control" placeholder="Email address" type="email">
-            
-            <input class="form-control" placeholder="Password" type="password">
+            <form name="login-form" ng-submit="sessionCtrl.login(user)" novalidate>
               
-            <label class="checkbox">
-              <input type="checkbox"> 
-              Keep Me Signed In
-            </label>
+              <input class="form-control" placeholder="Email address" type="email" ng-model="user.email">
+              
+              <input class="form-control" placeholder="Password" type="password" ng-model="user.password">
+                
+              <label class="checkbox">
+                <input type="checkbox"> 
+                Keep Me Signed In
+              </label>
 
-            <input type="submit" name="commit" value="log in" class="btn btn-lg btn-primary btn-block f-login-btn">
-          </form>
+              <input type="submit" name="commit" value="log in" class="btn btn-lg btn-primary btn-block f-login-btn">
+            </form>
+          </span>
+          
+          <span ng-if="$state.current.name === 'app.signup'">
+            <h1 class="f-login-title">
+              Sign Up
+            </h1>
+
+            <form name="login-form" ng-submit="sessionCtrl.register(user)" novalidate>
+              
+              <input class="form-control" placeholder="Full Name" type="text" ng-model="user.name">
+
+              <input class="form-control" placeholder="Email address" type="email" ng-model="user.email">
+              
+              <input class="form-control" placeholder="Password" type="password" ng-model="user.password">
+
+              <input type="submit" name="commit" value="sign up" class="btn btn-lg btn-block f-login-btn">
+            </form>
+          </span>
         </div>
 
         <div class="col-md-6 f-register-container">
@@ -30,7 +49,8 @@
               If you don’t already have an account click the button below to create your account.
             </p>
             
-            <a href="/#contact" class="btn btn-block f-register-btn">create account</a>
+            <a ui-sref="app.signup" class="btn btn-block f-register-btn" ng-if="$state.current.name === 'app.login'">create account</a>
+            <a ui-sref="app.login" class="btn btn-block f-register-btn login" ng-if="$state.current.name === 'app.signup'">log in</a>
 
             <div class="f-register-divider">
               or
