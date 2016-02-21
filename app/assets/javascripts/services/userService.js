@@ -15,7 +15,7 @@
       $http.post('api/v1/sessions', user)
         .success(function(data) {
           if(data.success) {
-            $window.localStorage.token = data.user.login_token;
+            $window.localStorage.token = data.login_token;
             $state.go('app.home');
           }
         });

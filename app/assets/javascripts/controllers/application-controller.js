@@ -9,6 +9,12 @@
 
     var appCtrl = this;
 
+    appCtrl.user = {};
+    
+    appCtrl.init = function() {
+
+    };
+
     appCtrl.logout = function() {
       userService.logout();
       $state.go('app.login');
