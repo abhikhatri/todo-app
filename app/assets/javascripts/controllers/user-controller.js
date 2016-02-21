@@ -11,29 +11,50 @@
     var userCtrl = this;
 
     userCtrl.user = {};
-    userCtrl.currentListIndex = 0;
+    userCtrl.newTask = {};
+    userCtrl.currentListIndex = 1;
+    userCtrl.currentTasks = null;
     
     userCtrl.init = function() {
       $http.get('/api/v1/users/' + $window.localStorage.token)
         .success(function(data) {
-          console.log(data);
           userCtrl.user = data.user;
+          console.log(data.user);
         });
     };
 
     userCtrl.init();
 
+    userCtrl.changeList = function(listId) {
+      userCtrl.currentListIndex = listId;
 
-    userCtrl.changeList = function(index) {
-      userCtrl.currentListIndex = index;
-      console.log(userCtrl.currentListIndex);
+      $http.get('/api/v1/tasks', {params: {list_id: listId}})
+        .success(function(data) {
+          userCtrl.currentTasks = data.tasks.reverse();
+        });
     };
 
     userCtrl.addTask = function(task) {
       task.list_id = userCtrl.currentListIndex;
+
       $http.post('/api/v1/tasks', {task: task})
         .success(function(data){
-          console.log(data);
+          userCtrl.init();
+          userCtrl.newTask = {};
+        });
+    };
+
+    userCtrl.updateTask = function(task) {
+      $http.put('/api/v1/tasks/' + task.id, {task: task})
+        .success(function(data) {
+            console.log(data);
+        });
+    };
+
+    userCtrl.deleteTask = function(taskId) {
+      $http.delete('/api/v1/tasks/' + taskId)
+        .success(function(data) {
+            userCtrl.init();
         });
     };
 

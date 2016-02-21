@@ -29,7 +29,7 @@ class Api::V1::TasksController < Api::V1::ApplicationController
 			render json: {
 				success: true,
 				task: @task.as_json({
-					only: [:id, :title, :description]
+					only: [:id, :title, :description, :completed]
 				})
 			}
 		else
