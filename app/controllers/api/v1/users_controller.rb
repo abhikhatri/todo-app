@@ -1,6 +1,6 @@
 class Api::V1::UsersController < Api::V1::ApplicationController
 
-	before_action :load_user, only: [:update, :destroy]
+	before_action :load_user, only: [:update, :destroy, :show]
 
 	def create
 		@user = User.new(user_params)
@@ -49,6 +49,10 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 				messages: "Something went wrong."
 			}
 		end
+	end
+
+	def show
+		render json: @user
 	end
 
 	private
