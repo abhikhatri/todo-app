@@ -1,7 +1,7 @@
 development: &development
   :users:
     :image:
-      :default_url: '/assets/missing.png'
+      :default_url: '/images/missing.png'
       :styles:
         :avatar: '150x150>'
       :url: "/todo-app/users/:id/:style/:basename.:extension"

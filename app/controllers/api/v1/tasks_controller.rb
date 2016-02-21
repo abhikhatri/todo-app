@@ -55,7 +55,7 @@ class Api::V1::TasksController < Api::V1::ApplicationController
 	end
 
 	def start_task
-		if @task.update_attributes(start_time: Time.zone.now, active: true)
+		if @task.update_attributes(start_time: Time.zone.now)
 			render json: {
 				success: true,
 				start_time: @task.start_time
@@ -68,13 +68,27 @@ class Api::V1::TasksController < Api::V1::ApplicationController
 		end
 	end
 
+	def pause_time
+		if @task.update_attributes(pause_time: Time.zone.now)
+			elapsed_time = ((@task.pause_time - @task.start_time).to_f / 3600).round(2)
+			@task.update_attributes(elapsed_time: elapsed_time)
+			render json: {
+				success: true,
+				start_time: @task.start_time,
+				pause_time: @task.pause_time,
+				elapsed_time: elapsed_time
+			}
+	end
+
 	def end_task
-		if @task.update_attributes(end_time: Time.zone.now, active: false, elapsed_time: (Time.zone.now - @task.start_time).to_f / 3600)
+		if @task.update_attributes(end_time: Time.zone.now)
+			elapsed_time = ((@task.end_time - @task.start_time).to_f / 3600).round(2)
+			@task.update_attributes(elapsed_time: elapsed_time, completed: true)
 			render json: {
 				success: true,
 				start_time: @task.start_time,
 				end_time: @task.end_time,
-				elapsed_time: ((@task.end_time - @task.start_time).to_f / 3600).round(2)
+				elapsed_time: elapsed_time
 			}
 		else
 			render json: {
@@ -84,10 +98,16 @@ class Api::V1::TasksController < Api::V1::ApplicationController
 		end
 	end
 
+	def show
+		render json: @user.as_json({
+			only: [:id, :title, :description, :completed]
+		})
+	end
+
 	private
 
 		def task_params
-			params.require(:task).permit(:title, :description, :list_id)
+			params.require(:task).permit(:title, :description, :list_id, :completed)
 		end
 
 		def load_task

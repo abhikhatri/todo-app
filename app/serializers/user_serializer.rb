@@ -7,5 +7,5 @@ class UserSerializer < ActiveModel::Serializer
 						 :image_url,
 						 :online
 
-		has_many :lists
+		has_many :lists, only: [:id, :name]
 end
