@@ -36,6 +36,15 @@ gem 'devise', "3.4.1"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'puma'
+gem 'rvm-capistrano'
+gem 'quiet_assets', group: :development
+
+group :development do
+  gem 'capistrano', '2.15.5'
+  gem 'capistrano-unicorn', :require => false
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

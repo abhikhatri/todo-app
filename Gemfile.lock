@@ -44,6 +44,14 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.2)
+    capistrano (2.15.5)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+    capistrano-unicorn (0.2.0)
+      capistrano (< 3.0)
     choice (0.2.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -69,6 +77,7 @@ GEM
     execjs (2.6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    highline (1.7.2)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -84,6 +93,13 @@ GEM
     minitest (5.8.4)
     multi_json (1.11.2)
     mysql2 (0.3.20)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.2)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -93,6 +109,9 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    puma (2.13.4)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -131,6 +150,8 @@ GEM
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
     ruby-graphviz (1.2.2)
+    rvm-capistrano (1.5.6)
+      capistrano (~> 2.15.4)
     sass (3.4.21)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -173,13 +194,18 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   byebug
+  capistrano (= 2.15.5)
+  capistrano-unicorn
   coffee-rails (~> 4.1.0)
   devise (= 3.4.1)
   jbuilder (~> 2.0)
   mysql2
   paperclip (~> 4.3)
+  puma
+  quiet_assets
   rails (= 4.2.5.1)
   rails-erd
+  rvm-capistrano
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
