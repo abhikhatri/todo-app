@@ -22,6 +22,7 @@ class Api::V1::SessionsController < Api::V1::ApplicationController
 			@user.update_attributes(online: true, login_token: SecureRandom.hex(4))
 			render json: {
 				success: true,
+				id: @user.id,
 				login_token: @user.login_token
 			}
 		else

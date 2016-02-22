@@ -8,7 +8,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 			render json: {
 				success: true,
 				user: @user.as_json({
-					only: [:login_token, :email, :name, :online, :state, :country],
+					only: [:id, :login_token, :email, :name, :online, :state, :country],
 					methods: [:image_url]
 				})
 			}
@@ -25,7 +25,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 			render json: {
 				success: true,
 				user: @user.as_json({
-					only: [:login_token, :email, :name, :online, :state, :country],
+					only: [:id, :login_token, :email, :name, :online, :state, :country],
 					methods: [:image_url]
 				})
 			}
