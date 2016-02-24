@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 		TodoTimer::Configuration.paperclip_options[:users][:image]
   validates_attachment :image, content_type: { content_type: /\Aimage\/.*\Z/ }
 
-  before_create :create_default_list
+  after_create :create_default_list
   before_create :add_evaluators_data
   after_create :add_invitation_code
   after_create :update_invitation_accepted
