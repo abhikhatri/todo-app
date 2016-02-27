@@ -58,6 +58,10 @@
         });
     };
 
+    userCtrl.fileNameChanged = function(file) {
+        console.log(file);
+    };
+
   });
   
 })();

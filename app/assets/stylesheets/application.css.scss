@@ -700,6 +700,7 @@ pre, code,.container .jumbotron,
 }
 
 // Custom Checkbox 
+
 .custom-checkbox{
   display: none;
 
@@ -720,4 +721,62 @@ pre, code,.container .jumbotron,
   position: absolute;
   margin: 4px 0;
   z-index: 999;
+}
+
+.vertical-fix{
+  font-size: 0;
+}
+
+.aligner{
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+/* Profile Modal Styles
+   ========================================================================== */
+
+#myModal{
+
+  .avatar-image{
+    border: 1px solid #d3d3d3;
+  }
+
+  .file-upload{
+    position: relative;
+    overflow: hidden;
+    margin: 10px; 
+  }
+
+  .file-upload .file-input{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    opacity: 0;
+    filter: alpha(opacity=0); 
+  }
+
+  .file-input::-webkit-file-upload-button{ 
+    cursor: pointer; 
+  }
+
+  .file-input::-moz-file-upload-button{ 
+    cursor: pointer; 
+  }
+
+  .file-input:-moz-file-upload-button{ 
+    cursor: pointer;
+  }
+
+  .file-input:-ms-file-upload-button{ 
+    cursor: pointer; 
+  }
+
 }
